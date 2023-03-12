@@ -1,0 +1,6 @@
+.modal {
+    position: absolute;
+    z-index: 1;
+    background: burlywood;
+    padding: 2rem;
+}
