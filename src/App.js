@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './App.css';
-import React from 'react';
 import Inputs from './components/Inputs/Inputs';
 import List from './components/List/List';
 
@@ -27,11 +26,11 @@ function App() {
     )
   }
   return (
-    <React.Fragment className="App">
+    <div className="App">
       <Inputs userData={userAdded} />
       <List users={oldUser} deleteUserIndex={deleteUser} />
-
-    </React.Fragment>
+      
+    </div>
   );
 }
 

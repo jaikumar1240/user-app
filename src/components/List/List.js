@@ -1,6 +1,5 @@
 
 const List = (props) => {
-    console.log(props.users);
     if (props?.users?.length === 0) {
         return <div>No User Added</div>
     }

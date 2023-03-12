@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import ErrorModal from "../ErrorModal/ErrorModal";
 
 const Inputs = (props) => {
+    const nameRef = useRef();
+
+    const ageRef = useRef()
     const [isValid, setIsValid] = useState(true);
     const addUser = (event) => {
+        const name = nameRef.current.value
+        const age = ageRef.current.value;
         event.preventDefault();
+        console.log(nameRef);
         if (name.trim().length === 0 || age.length < 1) {
             setIsValid(false);
             return;
@@ -20,19 +26,11 @@ const Inputs = (props) => {
             key: Math.random()
         }
         props.userData(user);
-        setName('')
-        setAge('')
+        nameRef.current.value = '';
+        ageRef.current.value = '';
     }
 
-    const [name, setName] = useState('');
-    const nameHandler = (event) => {
 
-        setName(event.target.value)
-    }
-    const [age, setAge] = useState('')
-    const ageHandler = (event) => {
-        setAge(event.target.value)
-    }
     function closeModal() {
         setIsValid(true);
     }
@@ -45,12 +43,12 @@ const Inputs = (props) => {
             <form onSubmit={addUser}>
                 <div>
                     <label>UserName</label>
-                    <input type='text' value={name} onChange={nameHandler} />
+                    <input ref={nameRef} type='text' />
                 </div>
 
                 <div>
                     <label>Age</label>
-                    <input type='number' value={age} onChange={ageHandler} />
+                    <input ref={ageRef} type='number' />
                 </div>
                 <button type="submit">Add</button>
             </form>
